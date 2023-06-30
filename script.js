@@ -1,12 +1,17 @@
-console.log("hello world");
+let ListeMots = ["Cachalot","Pétunia","Serviette"];
+let score = 0;
 
-let motTapeOk = true // Essayez de mettre false à la place de true
+for(let i in ListeMots){
+    if(prompt("copier le mot " + ListeMots[i]) == ListeMots[i]){
+        score++;
+    }
+}
+console.log(score);
 
-if (motTapeOk) {
-    console.log("Bravo, vous avez correctement tapé le mot")
-} else {
-    console.log("Échec, le mot n'est pas correct")
+function retournscore(score,ListeMots){
+    let message = 'votre score est de ' + score + ' sur ' + ListeMots.length;
+    return message;
 }
 
-let motUtilisateur = prompt("entrer un mot : ");
-console.log(motUtilisateur);
+let newMessage = retournscore(score,ListeMots);
+console.log(newMessage);
