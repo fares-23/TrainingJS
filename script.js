@@ -1,7 +1,9 @@
 let score = 0;
+let nbElements;
 
-function afficherResultat(score,listeMots){
-    console.log('votre score est de ' + score + ' sur ' + listeMots.length);
+
+function afficherResultat(){
+    console.log('votre score est de ' + this.score + ' sur ' + nbElements);
 }
 
 function choisirPhraseOuMots(){
@@ -15,13 +17,14 @@ function choisirPhraseOuMots(){
 
 
 function lancerBoucleDeJeu(choix,listeMots,listePhrases){
-    switch (choix){
+    switch(choix){
         case 'mots':
             for(let i in listeMots){
                 if(prompt("copier le mot " + listeMots[i]) == listeMots[i]){
                     score++;
                 }
             }
+            nbElements=listeMots.length;
             break;
         case 'phrase':
             for(let i in listePhrases){
@@ -29,6 +32,15 @@ function lancerBoucleDeJeu(choix,listeMots,listePhrases){
                     score++;
                 }
             }
+            nbElements=listePhrases.length;
             break;
-    }       
+    }  
+    console.log('lancerboucle')     
 }
+
+function lancerJeu(){
+    lancerBoucleDeJeu(choisirPhraseOuMots(),listeMots,listePhrases);
+    afficherResultat();
+}
+
+
