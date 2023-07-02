@@ -12,6 +12,7 @@ function afficherResultat(){
 }
 
 function lancerJeu(){
+    initAddEventListenerPopup()
     let liste = listeMots
     let boutonValider = document.querySelector(".zoneSaisie button")
     let inputEcriture = document.querySelector(".zoneSaisie input")
