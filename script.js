@@ -11,6 +11,11 @@ function afficherResultat(){
     spanScore.innerHTML = resultat
 }
 
+function afficherEmail(nom, email, score) {
+    let mailto = `mailto:${email}?subject=Partage du score Azertype&body=Salut, je suis ${nom} et je viens de réaliser le score ${score} sur le site d'Azertype !`
+    location.href = mailto
+}
+
 function lancerJeu(){
     initAddEventListenerPopup()
     let liste = listeMots
@@ -44,6 +49,23 @@ function lancerJeu(){
             afficherProposition(liste[i])
         })
     }
+
+    let form = document.querySelector("form")
+    
+
+    form.addEventListener("submit",(event)=>{
+        let votreNom = document.querySelector(".popup #nom")
+        let votreMail = document.querySelector(".popup #email")
+        event.preventDefault()
+        if(validerNom(votreNom.value)){
+            console.log("ok")
+        }else{
+            console.log("pas ok")
+        }
+        //afficherEmail(votreNom.value,votreMail.value,score)
+        votreMail.value=''
+        votreNom.value=''
+    })
 }
 
 
@@ -58,9 +80,13 @@ function verification(proposition,reference){
     }
 }
 
-function choixListe(){
-
-
+function validerNom(nom){
+    let regle = new RegExp("^[a-z]+$")
+    console.log(regle.test(nom))
+    if(nom.length > 1){
+        regle.test(nom)
+    }
+    return false
 }
 
 
